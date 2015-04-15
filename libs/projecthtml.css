@@ -1,0 +1,274 @@
+﻿body {
+  background-color: #2c2c2c;
+  font: 10px sans-serif;
+}
+
+.notavailable{
+  font-size: 28px;
+  fill: #ccc;
+}
+
+.circles{
+    cursor: pointer;
+  }
+  
+.bars{
+    cursor: pointer;
+	stroke: null;
+  }
+
+div.ui-slider-range.ui-widget-header {
+    background: #FFF;
+}
+
+.ui-slider-horizontal {
+  fill: #000;
+}
+
+#defaultval, #rangedval { display: block; margin-bottom: 25px; }
+
+.selected{
+    fill: black;
+    stroke:  lightblue;
+}
+#present{
+  cursor: pointer;
+  opacity: 1;
+}
+#present1{
+  cursor: pointer;
+  opacity: 1;
+  stroke: lightblue;
+}
+.country{
+  fill: null;}
+  
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #bbb;
+  shape-rendering: crispEdges;
+}
+
+.label {
+  font-size: 11px;
+  fill: #bbb;
+}
+
+.permlabel {
+  font-size: 11px;
+  fill: #bbb;
+}
+
+.permlabel2{
+  font-size: 12px;
+  fill: #bbb;
+}
+
+.circles {
+  stroke: gray;
+}
+
+.bars {
+  stroke: gray;
+}
+
+.path{
+  stroke: white;
+  position: relative;
+}
+.line {
+  fill: none;
+  stroke: none;
+  stroke-width: 1.5px;
+}
+
+.average {
+  fill: none;
+  stroke: black;
+  stroke-width: 2px;
+}
+
+.wrapper {
+      width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+}
+
+#w { 
+	
+  display: block;
+  width: 700px;
+  background: #fff;
+  margin-top: 40px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;e
+}
+.ui-widget-content {background: none}
+#content {
+  font-size: 1.4em;
+  background: #2c2c2c
+}
+
+#play {
+  top: 10px;
+  left: 20px;
+}
+
+.tipsy-inner{
+  align: left;
+}
+.Antarctica{
+  fill: none;
+  stroke: none;
+}
+.absolute{
+  position: absolute;
+  top: 600px;
+  left: 15px;
+}
+
+/*Info Box Interior*/
+.clicked{
+  font-size: 20px;
+  fill:#bbb;
+}
+#clicked1{
+  font-size:25px;
+  fill:#bbb;
+
+}
+
+#clicked2{
+  font-size:15px;
+  fill:#bbb;
+
+}
+#clicked3{
+  font-size:15px;
+  fill:#bbb;
+  text-anchor: middle;
+}
+#clicked4{
+  font-size:15px;
+  fill:#bbb;
+  text-anchor: middle;
+}
+#clicked5{
+  font-size:15px;
+  fill:#bbb;
+  text-anchor: middle;
+}
+#clicked6{
+  font-size:15px;
+  fill:#bbb;
+}
+#clicked7{
+  font-size:18px;
+    fill:#bbb;
+
+}
+#clicked8{
+  font-size:15px;
+  fill:#bbb;
+
+}
+#clicked9{
+  font-size:15px;
+  fill:#bbb;
+
+}
+
+body {color:#bbb;}
+
+.data_rect{
+  fill: #3c3c3c;
+  stroke-width: 4px;
+}
+
+
+.axis{
+  font-family: 'Open Sans Condensed', serif;
+  font-size: 12px;
+  fill:#bbb;
+}
+
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
+
+.container {
+    position: absolute;
+    margin: 0px auto;
+    left: 0px;
+  top: -5px;
+    clear: both;
+}
+
+.circlegraphs {
+	position: absolute;
+	top: 135px;
+	left: 1350px;
+}
+
+#goldmedal{
+	position: absolute;
+	top: 54px;
+	left: 1100px;
+}
+
+#silvermedal{
+	position: absolute;
+	top: 52px;
+	left: 1250px;
+}
+
+#bronzemedal{
+	position: absolute;
+	top: 52px;
+	left: 1400px;
+}
+
+#selectacountry{
+	font-size: 14px;
+}
+
+#welcome{
+	font-size: 28px;
+}
+
+#vis{
+	width: 1540px;
+}
+
+.specialtooltip{
+	position: absolute;
+	cursor: pointer;
+	visibility: hidden;
+	background-color: black;
+	color: white;
+	opacity: 0.8;
+	padding: 5px;
+	width: 210px;
+	font-size: 11px;
+}
+
+.tooltip{
+	cursor: pointer;
+}
+
+#tooltipcircle{
+	stroke: black;
+	stroke-width: 2px;
+}

@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="./libs/d3.v3.min.js"></script>
+    <script type="text/javascript" src="./libs/jquery.tipsy.js"></script>
+    <script src="./libs/d3.slider.js"></script>
+    <script src="./libs/jquery.tipsy.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script src="./fancyBox/source/jquery.fancybox.pack.js"></script>
+	<script src="./fancyBox/source/jquery.fancybox.js"></script> 
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <link href="./libs/tipsy.css" rel="stylesheet" type="text/css" />
+    <link href="./libs/d3.slider.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="./fancyBox/source/jquery.fancybox.css" type="text/css"
+		media="screen" />
+    <link href="./libs/projecthtml.css" rel="stylesheet" type="text/css" />
+    <link href="./libs/jqueryui_menu.css" rel="stylesheet" type="text/css" />
+    <link href="./libs/introjs.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+    <div class="medalimages">
+        <div id="goldmedal">
+            <img src="./img/gold.gif" width="60" height="61">
+        </div>
+        <div id="silvermedal">
+            <img src="./img/silver.gif" width="61" height="60">
+        </div>
+        <div id="bronzemedal">
+            <img src="./img/bronze.gif" width="60" height="60">
+        </div>
+    </div>
+
+    <div class="container">
+        <nav>
+            <ul class="mcd-menu">
+                <li>
+                    <a href="" data-step=1 data-intro='Welcome to The Olympics: An
+		              Overview. This visualization is designed to track Olympic participation
+		              and performance over the 100+ year history of the Summer and Winter Olympics.
+		               Click "Next" to start the tour, or "Skip" to get right to the visualization.'>
+                        <strong>The Olympics:</strong>
+                        <small>An Overview</small>
+                    </a>
+                </li>
+                <li>
+                    <a class="image" title='From Left: Rachel Kassa, Alex Miller, J.T. Menchaca </br>
+                    <strong> - Rachel Kassa </strong> is a junior in Quincy studying Government. 
+		            Her favorite Olympic Games were the 1904 Summer Olympics, when the US took home 239 medals. 
+		          </br><strong> - Alex Miller </strong>is a junior in Adams studying Biomedical Engineering. 
+				    His favorite Games were the 1980 Winter Games with the US defeat of USSR hockey in the 
+				    "Miracle on Ice". </br><strong> - J.T. Menchaca </strong>is a junior in Pfoho studying 
+				    History & Science. His favorite Games were the 2008 Beijing Olympics after recently 
+				    having the chance to visit the Beijing Olympic Village.' href="./img/teamphoto.jpg">
+                        <strong>About</strong>
+                        <small>The Team</small>
+                    </a>
+                </li>
+                <li>
+                    <a class="movie" href="https://www.youtube.com/watch?v=d_c54_M7ZxY">
+                        <strong>Tour</strong>
+                        <small>Learn More</small>
+                    </a>
+                </li>
+                <li>
+                    <a href="processBook.pdf">
+                        <strong>Process Book</strong>
+                        <small>See the Process</small>
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+    </div>
+
+
+    <div id="vis">
+
+        <div id="informationrect" style="z-index:-1;position:absolute;left:855px;top:10px;fill:#3c3c3c;height:105px;width:646px;"
+        data-step=5 data-position="bottom" data-intro="If you click on one of the participating countries on the world map for a given Olympic year, that country's medal count, GDP/Capita, and population at the time of the selected Olympics will appear here.">
+
+        </div>
+
+        <div id="gdprect" style="z-index:-1;position:absolute;left:870px;top:145px;fill:#3c3c3c;height:251px;width:635px;"
+        data-step=6 data-position="bottom" data-intro="For each Olympics after 1960, a scatterplot of each participating 
+		country's Total Medal Count vs. either GDP/Capita or population size will appear here.  Statistically, GDP/Capita 
+		and population size are the two variables with the strongest correlation (both positive) with a country's final 
+		medal count of an Olympics.  You can select any circle from this graph to see more detailed information about the 
+		country.">
+        </div>
+
+        <div id="totalmedalrect" data-position='top' style="z-index:-1;position:absolute;left:870px;top:410px;fill:#3c3c3c;height:254px;width:635px;"
+        data-step=8 data-position="bottom" data-intro="In this graph, the countries are ranked by their 
+		Total Medal Count.  As with the world map and scatterplot, you can also select a country here to see 
+		more information.  Please enjoy!">
+        </div>
+
+        <div id="maprect" style="z-index:-1;position:absolute;left:10px;top:50px;fill:#3c3c3c;height:540px;width:810px;"
+        data-step=2 data-position="right" data-intro='On this world map, the participating countries in the selected 
+		Olympic year will be brightly displayed, while the non-participating countries are grayed out.  If you see a small 
+		white circle appear on the map, hover over it for an interesting fact about the selected Olympics.'>
+        </div>
+
+    </div>
+
+    <div class="specialtooltip">
+    </div>
+
+    <div class="circlegraphs" data-step=7 data-position="left" data-intro='Toggle between viewing country Total Medal 
+     Count vs. GDP/Capita or Population here.'>
+        <script>
+        </script>
+        <form>
+            <label>
+                <input class="GDPgraph" id="GDP" type="radio" name="order" checked>GDP/Capita</label>
+            <label>
+                <input class="POPgraph" id="POP" type="radio" name="order">Population</label>
+        </form>
+    </div>
+
+    <div class="absolute" data-position='top' data-step=3 data-intro='The Olympics are organized by Summer and Winter 
+	   Olympics.  To view either category, select the respective button.'>
+        <div>
+            <form>
+                <label>
+                    <input class="SummerOlympics" id="Summer Olympics" type="radio" name="order" checked>Summer Olympics
+                </label>
+                <label>
+                    <input class="WinterOlympics" id="Winter Olympics" type="radio" name="order">Winter Olympics
+                </label>
+            </form>
+        </div>
+
+    <div id="w">
+        <div id="content" data-position='top' data-step=4 data-intro='Use the slider to view the participating countries on the world map for each Olympics.  You can manually drag the slider, or you can press the "play" button for a time-lapse of the Olympics over the years.'>
+             <div id="defaultval">
+                 <span id="currentval" class="font"></span>
+                </div>
+             <div id="defaultslide"></div>
+                <button id="play" onclick="timelapseStart()">play</button>
+            </div>
+        </div>
+    </div>
+
+	<script src="./libs/data_exceptions.js"></script>
+    <script src="./libs/project_fancybox.js"></script>
+    <script src="./libs/intro.js"></script>
+    <script src="projectJS_FINAL_ed.js"></script>
+
+</body>
+
+</html>

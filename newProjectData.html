@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <script src="/libs/jquery-1.10.1.js"></script>
+    <script src="/libs/jquery.xdomainajax.js"></script>
+    <script src="/libs/d3.v3.min.js"></script>
+    <script src="/libs/FileSaver.js"></script>
+</head>
+<body>
+
+<script>
+    var convertToInt;
+	
+	convertToInt = function(s) {
+		return parseInt(s.replace(/,/g, ""), 10);
+    };
+	var k = 0;
+	var overall_obj = {};
+	var hold_arr = [];
+	console.log('hmm');
+	for (var j = 1; j < 48; j++){
+		var hold_data;
+		$.ajax({
+			url: "http://www.databaseolympics.com/games/gamesyear.htm?g="+j,
+			type: 'GET',
+			cache: false,
+			success: function(data) {
+				useReturnData(data);
+		}});
+	}
+	
+    /* takes an array of strings
+       and writes them line by line into a file given by filename
+     */
+	 
+	 
+	function processReturnData(hold_arr){
+		var root,allData, body, table;
+		root = $("<body></body>")
+		root.html(hold_arr.responseText)
+		
+
+		var content = root.find(".cl2 td"); // find all the nodes that have ID "content"          			
+		var csv_content = "";
+		var all_csv_content = [];
+		var l = 1;
+		temp_obj = {};
+		var year = "";
+		var year_hold = root.find(".nme")[0].innerHTML;
+		for (var k = 8; k < 28; k++){
+			year = year + year_hold[year_hold.indexOf("<strong>") + k];
+		}
+		console.log(year);
+		temp_obj["Year"] = year;
+		for (var i = 0; i < 5*86; i++){			
+			if (content[i] !== undefined && content[i].childNodes[1] !== undefined){
+				if (i % 5 == 0) {
+					temp_obj[content[i].childNodes[1].innerHTML] = {};}	
+				else if (i % 5 == 1){
+					temp_obj[content[i-1].childNodes[1].innerHTML]["Gold"] = content[i].childNodes[1].innerHTML	
+				}
+				else if (i % 5 == 2){
+					temp_obj[content[i-2].childNodes[1].innerHTML]["Silver"] = content[i].childNodes[1].innerHTML					
+				}
+				else if (i % 5 == 3){
+					temp_obj[content[i-3].childNodes[1].innerHTML]["Bronze"] = content[i].childNodes[1].innerHTML					
+				}
+				else if (i % 5 == 4){
+					temp_obj[content[i-4].childNodes[1].innerHTML]["Total"] = content[i].childNodes[1].innerHTML					
+				}
+			}
+		}
+		return temp_obj; 
+	}		
+	 
+	function useReturnData(data){
+		hold_arr.push(data);
+		if (hold_arr.length == 47){
+			console.log('ok');
+			console.log(hold_arr);
+			overall_obj = {};
+			k = 0;
+			for (var i = 0; i < hold_arr.length; i++){
+				hold_arr[i] = processReturnData(hold_arr[i])
+			}
+			for (var i = 0; i < hold_arr.length; i++){
+				overall_obj[hold_arr[i]["Year"]] = hold_arr[i];
+			}
+			console.log(hold_arr);
+			console.log(overall_obj);
+			saveToFile(overall_obj,"olympicData.json");
+		}
+	};
+	 
+   var saveToFile = function(object, filename){
+        var blob, blobText;
+        blobText = [JSON.stringify(object)];
+        blob = new Blob(blobText, {
+            type: "text/plain;charset=utf-8"
+        });
+        saveAs(blob, filename);
+    }
+	
+
+
+
+</script>
+
+
+</body>
+</html>
